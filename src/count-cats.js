@@ -14,15 +14,20 @@ const { NotImplementedError } = require('../extensions/index.js');
  * ]) => 3`
  *
  */
-function countCats(backyard) {
- let counter = 0;
- for (let i = 0; i < backyard.length; i++) {
-   for (let k = 0; k < backyard[i].length; k++) {
-     if (backyard[i][k] == `^^`) counter++;
-   }
- }
- return counter
-}
+
+  function countCats(backyard) {
+    return backyard.reduce((acc, el) => acc + el.reduce((acc, el) => el == '^^' ? acc + 1 : acc, 0), 0)
+  }
+
+// function countCats(backyard) {
+//  let counter = 0;
+//  for (let i = 0; i < backyard.length; i++) {
+//    for (let k = 0; k < backyard[i].length; k++) {
+//      if (backyard[i][k] == `^^`) counter++;
+//    }
+//  }
+//  return counter
+// }
 
 module.exports = {
   countCats
